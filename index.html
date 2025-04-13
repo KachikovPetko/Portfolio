@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PK - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#" class="logo">PK</a>
+            <div class="nav-links">
+                <a href="#home" data-i18n="nav.home">Home</a>
+                <a href="#about" data-i18n="nav.about">About me</a>
+                <a href="#skills" data-i18n="nav.skills">Skills</a>
+                <a href="#education" data-i18n="nav.education">Education</a>
+                <a href="#projects" data-i18n="nav.projects">Projects</a>
+                <a href="#experience" data-i18n="nav.experience">Experience</a>
+            </div>
+            <div class="language-selector">
+                <a href="#" class="lang-link" data-lang="bg">BUL</a>
+                <a href="#" class="lang-link active" data-lang="en">ENG</a>
+                <a href="#" class="lang-link" data-lang="de">GER</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 data-i18n="hero.title">Transforming ideas into elegant digital solutions</h1>
+            <a href="#" class="cta-button" data-i18n="hero.cta">Download CV</a>
+            <div class="social-links">
+                <a href="#" target="_blank" aria-label="Gmail">
+                    <i class="fa-regular fa-envelope"></i>
+                </a>
+                <a href="#" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" target="_blank" aria-label="Twitter">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+                <a href="#" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="#" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="#" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="profile-pic.jpg" alt="Profile Picture">
+                </div>
+                <div class="about-text">
+                    <h2 data-i18n="about.title">About Me</h2>
+                    <p data-i18n="about.description">I am a passionate developer with a keen eye for detail and a love for creating elegant solutions. With expertise in multiple programming languages and frameworks, I strive to build applications that not only function flawlessly but also provide an exceptional user experience. My approach combines technical excellence with creative problem-solving to deliver outstanding results.</p>
+                    <a href="#contact" class="hire-button" data-i18n="about.hireMe">Hire Me</a>
+                </div>
+            </div>
+            <div class="divider-container">
+                <div class="divider"></div>
+            </div>
+            <div class="hobbies">
+                <h3 class="hobbies-title" data-i18n="about.hobbies">Hobbies</h3>
+                <div class="hobby-slider">
+                    <div class="hobby-track">
+                        <div class="hobby-item">
+                            <i class="fas fa-code"></i>
+                            <span data-i18n="hobbies.coding">Coding</span>
+                        </div>
+                        <div class="hobby-item">
+                            <i class="fas fa-camera"></i>
+                            <span data-i18n="hobbies.photography">Photography</span>
+                        </div>
+                        <div class="hobby-item">
+                            <i class="fas fa-hiking"></i>
+                            <span data-i18n="hobbies.hiking">Hiking</span>
+                        </div>
+                        <div class="hobby-item">
+                            <i class="fas fa-book"></i>
+                            <span data-i18n="hobbies.reading">Reading</span>
+                        </div>
+                        <div class="hobby-item">
+                            <i class="fas fa-gamepad"></i>
+                            <span data-i18n="hobbies.gaming">Gaming</span>
+                        </div>
+                        <div class="hobby-item">
+                            <i class="fas fa-music"></i>
+                            <span data-i18n="hobbies.music">Music</span>
+                        </div>
+                        <div class="hobby-item">
+                            <i class="fas fa-plane"></i>
+                            <span data-i18n="hobbies.travel">Travel</span>
+                        </div>
+                        <div class="hobby-item">
+                            <i class="fas fa-palette"></i>
+                            <span data-i18n="hobbies.art">Art</span>
+                        </div>
+                        <div class="hobby-item">
+                            <i class="fas fa-dumbbell"></i>
+                            <span data-i18n="hobbies.fitness">Fitness</span>
+                        </div>
+                        <div class="hobby-item">
+                            <i class="fas fa-utensils"></i>
+                            <span data-i18n="hobbies.cooking">Cooking</span>
+                        </div>
+                        <!-- Duplicate items for continuous scrolling -->
+                        <div class="hobby-item">
+                            <i class="fas fa-code"></i>
+                            <span data-i18n="hobbies.coding">Coding</span>
+                        </div>
+                        <div class="hobby-item">
+                            <i class="fas fa-camera"></i>
+                            <span data-i18n="hobbies.photography">Photography</span>
+                        </div>
+                        <div class="hobby-item">
+                            <i class="fas fa-hiking"></i>
+                            <span data-i18n="hobbies.hiking">Hiking</span>
+                        </div>
+                        <div class="hobby-item">
+                            <i class="fas fa-book"></i>
+                            <span data-i18n="hobbies.reading">Reading</span>
+                        </div>
+                        <div class="hobby-item">
+                            <i class="fas fa-gamepad"></i>
+                            <span data-i18n="hobbies.gaming">Gaming</span>
+                        </div>
+                        <div class="hobby-item">
+                            <i class="fas fa-music"></i>
+                            <span data-i18n="hobbies.music">Music</span>
+                        </div>
+                        <div class="hobby-item">
+                            <i class="fas fa-plane"></i>
+                            <span data-i18n="hobbies.travel">Travel</span>
+                        </div>
+                        <div class="hobby-item">
+                            <i class="fas fa-palette"></i>
+                            <span data-i18n="hobbies.art">Art</span>
+                        </div>
+                        <div class="hobby-item">
+                            <i class="fas fa-dumbbell"></i>
+                            <span data-i18n="hobbies.fitness">Fitness</span>
+                        </div>
+                        <div class="hobby-item">
+                            <i class="fas fa-utensils"></i>
+                            <span data-i18n="hobbies.cooking">Cooking</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="skills-container">
+            <h2 data-i18n="skills.title">
+                <i class="material-icons">code</i>
+                SKILLS
+            </h2>
+            <div class="skills-grid">
+                <!-- Languages Section -->
+                <div class="skills-category">
+                    <h3>Languages</h3>
+                    <div class="skills-items">
+                        <div class="skill-item">
+                            <i class="material-icons">html</i>
+                            <span>HTML5</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="material-icons">css</i>
+                            <span>CSS3</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="material-icons">javascript</i>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frameworks Section -->
+                <div class="skills-category">
+                    <h3>Frameworks</h3>
+                    <div class="skills-items">
+                        <div class="skill-item">
+                            <i class="material-icons">web</i>
+                            <span>React</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="material-icons">next_plan</i>
+                            <span>Next.js</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="material-icons">flutter_dash</i>
+                            <span>Flutter</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="material-icons">cloud_done</i>
+                            <span>Firebase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Development Section -->
+                <div class="skills-category">
+                    <h3>Mobile Development</h3>
+                    <div class="skills-items">
+                        <div class="skill-item">
+                            <i class="material-icons">phone_android</i>
+                            <span>Flutter</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="material-icons">cloud_queue</i>
+                            <span>Firebase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Section -->
+                <div class="skills-category">
+                    <h3>AI</h3>
+                    <div class="skills-items">
+                        <div class="skill-item">
+                            <i class="material-icons">psychology</i>
+                            <span>TensorFlow</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="material-icons">auto_awesome</i>
+                            <span>PyTorch</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools Section -->
+                <div class="skills-category">
+                    <h3>Tools</h3>
+                    <div class="skills-items">
+                        <div class="skill-item">
+                            <i class="material-icons">source</i>
+                            <span>Git</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="material-icons">storage</i>
+                            <span>MongoDB</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="material-icons">database</i>
+                            <span>PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education" id="education">
+        <div class="education-container">
+            <h2 data-i18n="education.title">Education</h2>
+            <div class="education-timeline">
+                <div class="education-item">
+                    <div class="education-year">2020 - 2024</div>
+                    <div class="education-content">
+                        <h3 data-i18n="education.degree">Bachelor's Degree in Computer Science</h3>
+                        <p class="education-institution" data-i18n="education.university">University Name</p>
+                        <p class="education-description" data-i18n="education.courseWork">Relevant coursework in software development, algorithms, and data structures.</p>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <div class="education-year">2016 - 2020</div>
+                    <div class="education-content">
+                        <h3 data-i18n="education.highSchool">High School Diploma</h3>
+                        <p class="education-institution" data-i18n="education.school">School Name</p>
+                        <p class="education-description" data-i18n="education.focus">Focus on mathematics and computer science.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="projects-container">
+            <h2 data-i18n="projects.title">Projects</h2>
+            <div class="projects-grid" id="projects-grid">
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p data-i18n="projects.loading">Loading projects...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <div class="experience-container">
+            <h2 data-i18n="experience.title">Experience</h2>
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <div class="experience-year">2023 - Present</div>
+                    <div class="experience-content">
+                        <h3 data-i18n="experience.softwareDev"></h3>
+                        <h4 data-i18n="experience.company"></h4>
+                        <ul>
+                            <li data-i18n="experience.currentRole.desc1"></li>
+                            <li data-i18n="experience.currentRole.desc2"></li>
+                            <li data-i18n="experience.currentRole.desc3"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-year">2022 - 2023</div>
+                    <div class="experience-content">
+                        <h3 data-i18n="experience.juniorDev"></h3>
+                        <h4 data-i18n="experience.prevCompany"></h4>
+                        <ul>
+                            <li data-i18n="experience.previousRole.desc1"></li>
+                            <li data-i18n="experience.previousRole.desc2"></li>
+                            <li data-i18n="experience.previousRole.desc3"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 data-i18n="footer.contact">Contact</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:your.email@example.com">your.email@example.com</a></li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+1234567890">+1 (234) 567-890</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> <span>Your Location</span></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 data-i18n="footer.quickLinks">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home" data-i18n="nav.home">Home</a></li>
+                        <li><a href="#about" data-i18n="nav.about">About Me</a></li>
+                        <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+                        <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+                        <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 data-i18n="footer.connect">Connect</h3>
+                    <div class="social-links">
+                        <a href="#" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 PK Portfolio. <span data-i18n="footer.rights">All rights reserved.</span></p>
+                <p><span data-i18n="footer.designed">Designed and developed with</span> <i class="fas fa-heart"></i> <span data-i18n="footer.by">by PK</span></p>
+            </div>
+        </div>
+    </footer>
+</body>
+<script src="translations.js"></script>
+<script src="script.js"></script>
+</html> 
