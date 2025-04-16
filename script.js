@@ -53,71 +53,206 @@ window.addEventListener('scroll', function() {
     }
 });
 
+// Smooth scroll to sections with centering
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        if (targetSection) {
+            const windowHeight = window.innerHeight;
+            const sectionHeight = targetSection.offsetHeight;
+            const offset = Math.max(0, (windowHeight - sectionHeight) / 2);
+            
+            const targetPosition = targetSection.offsetTop - offset;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
 // GitHub Projects Loading
 async function loadGitHubProjects() {
-    const projectsGrid = document.getElementById('projects-grid');
+    const projectsTrack = document.getElementById('projects-track');
     const username = 'KachikovPetko';
-
+    const projectsPerPage = 10;
+    const token = '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';
+    
     try {
-        const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&direction=desc`);
-        if (!response.ok) {
-            throw new Error('Failed to fetch repositories');
-        }
-        const projects = await response.json();
-
-        // Clear loading message
-        projectsGrid.innerHTML = '';
-
-        // Display projects
-        projects.forEach(project => {
-            const projectCard = document.createElement('div');
-            projectCard.className = 'project-card';
-            
-            // Get languages for the project
-            fetch(`https://api.github.com/repos/${username}/${project.name}/languages`)
-                .then(response => response.json())
-                .then(languages => {
-                    const languageTags = Object.keys(languages).slice(0, 3);
-                    
-                    projectCard.innerHTML = `
-                        <div class="project-content">
-                            <h3>${project.name}</h3>
-                            <p>${project.description || (translations[currentLang] ? translations[currentLang].projects.noDescription : 'No description available')}</p>
-                            <div class="project-tags">
-                                ${languageTags.map(lang => `<span>${lang}</span>`).join('')}
-                            </div>
-                            <div class="project-links">
-                                <a href="${project.html_url}" target="_blank" aria-label="GitHub Repository">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                ${project.homepage ? `
-                                    <a href="${project.homepage}" target="_blank" aria-label="Live Demo">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                ` : ''}
-                            </div>
-                            <div class="project-stats">
-                                <span><i class="fas fa-star"></i> ${project.stargazers_count}</span>
-                                <span><i class="fas fa-code-branch"></i> ${project.forks_count}</span>
-                            </div>
-                        </div>
-                    `;
-                })
-                .catch(error => {
-                    console.error('Error fetching languages:', error);
-                });
-            
-            projectsGrid.appendChild(projectCard);
+        const response = await fetch(`https://api.github.com/users/${username}/repos?per_page=${projectsPerPage}&sort=updated`, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/vnd.github.v3+json'
+            }
         });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const projects = await response.json();
+        
+        if (!projects || projects.length === 0) {
+            throw new Error('No projects found');
+        }
+
+        renderProjects(projects, projectsTrack);
+
     } catch (error) {
-        projectsGrid.innerHTML = `
+        console.error('Error loading projects:', error);
+        projectsTrack.innerHTML = `
             <div class="error-message">
                 <i class="fas fa-exclamation-circle"></i>
-                <p>${translations[currentLang] ? translations[currentLang].projects.error : 'Failed to load projects. Please try again later.'}</p>
+                <p data-i18n="projects.error">${translations[currentLang].projects.error}</p>
+                <p class="error-details">${error.message}</p>
             </div>
         `;
-        console.error('Error loading GitHub projects:', error);
     }
+}
+
+function renderProjects(projects, container) {
+    // Clear loading state
+    container.innerHTML = '';
+    
+    // Create project cards
+    projects.forEach(project => {
+        const card = createProjectCard(project);
+        container.appendChild(card);
+    });
+
+    // Clone first few items for infinite scroll
+    const itemsToClone = Math.min(3, projects.length);
+    for (let i = 0; i < itemsToClone; i++) {
+        const clone = container.children[i].cloneNode(true);
+        container.appendChild(clone);
+    }
+
+    // Set up slider functionality
+    let isTransitioning = false;
+    let startX = 0;
+    let scrollLeft = 0;
+    let isDragging = false;
+
+    const prevButton = document.querySelector('.slider-nav.prev');
+    const nextButton = document.querySelector('.slider-nav.next');
+
+    function updateSliderPosition(index) {
+        const cardWidth = container.firstElementChild.offsetWidth + 30; // width + gap
+        container.style.transform = `translateX(-${index * cardWidth}px)`;
+    }
+
+    function handleTransitionEnd() {
+        const cards = container.children;
+        const cardWidth = cards[0].offsetWidth + 30;
+        const scrollPosition = Math.abs(parseInt(container.style.transform.match(/-?\d+/)[0]));
+        const currentIndex = Math.round(scrollPosition / cardWidth);
+
+        if (currentIndex >= projects.length) {
+            container.style.transition = 'none';
+            updateSliderPosition(0);
+            setTimeout(() => {
+                container.style.transition = 'transform 0.5s ease';
+            }, 10);
+        } else if (currentIndex === 0) {
+            container.style.transition = 'none';
+            updateSliderPosition(projects.length);
+            setTimeout(() => {
+                container.style.transition = 'transform 0.5s ease';
+            }, 10);
+        }
+        isTransitioning = false;
+    }
+
+    function moveToNext() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        const cards = container.children;
+        const cardWidth = cards[0].offsetWidth + 30;
+        const scrollPosition = Math.abs(parseInt(container.style.transform.match(/-?\d+/)[0]));
+        const nextPosition = scrollPosition + cardWidth;
+        container.style.transition = 'transform 0.5s ease';
+        updateSliderPosition(nextPosition / cardWidth);
+    }
+
+    function moveToPrev() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        const cards = container.children;
+        const cardWidth = cards[0].offsetWidth + 30;
+        const scrollPosition = Math.abs(parseInt(container.style.transform.match(/-?\d+/)[0]));
+        const prevPosition = scrollPosition - cardWidth;
+        container.style.transition = 'transform 0.5s ease';
+        updateSliderPosition(prevPosition / cardWidth);
+    }
+
+    // Event Listeners
+    container.addEventListener('transitionend', handleTransitionEnd);
+    nextButton.addEventListener('click', moveToNext);
+    prevButton.addEventListener('click', moveToPrev);
+
+    // Touch and mouse events for dragging
+    container.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        startX = e.pageX - container.offsetLeft;
+        scrollLeft = container.scrollLeft;
+    });
+
+    container.addEventListener('mouseleave', () => {
+        isDragging = false;
+    });
+
+    container.addEventListener('mouseup', () => {
+        isDragging = false;
+    });
+
+    container.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - container.offsetLeft;
+        const walk = (x - startX) * 2;
+        if (Math.abs(walk) > 50) {
+            if (walk > 0) {
+                moveToPrev();
+            } else {
+                moveToNext();
+            }
+            isDragging = false;
+        }
+    });
+
+    // Initialize position
+    updateSliderPosition(1);
+}
+
+function createProjectCard(project) {
+    const card = document.createElement('div');
+    card.className = 'project-card';
+    
+    card.innerHTML = `
+        <div class="project-content">
+            <h3>${project.name}</h3>
+            <p>${project.description || translations[currentLang].projects.noDescription}</p>
+            <div class="project-tags">
+                <span>${project.language || 'N/A'}</span>
+            </div>
+            <div class="project-links">
+                <a href="${project.html_url}" target="_blank" aria-label="GitHub Repository">
+                    <i class="fab fa-github"></i>
+                </a>
+                ${project.homepage ? `
+                    <a href="${project.homepage}" target="_blank" aria-label="Live Demo">
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                ` : ''}
+            </div>
+        </div>
+    `;
+    
+    return card;
 }
 
 // Load projects when the page loads

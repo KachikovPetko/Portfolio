@@ -5,8 +5,7 @@ const translations = {
             about: 'About me',
             skills: 'Skills',
             education: 'Education',
-            projects: 'Projects',
-            experience: 'Experience'
+            projects: 'Projects'
         },
         hero: {
             title: 'Transforming ideas into elegant digital solutions',
@@ -14,48 +13,76 @@ const translations = {
         },
         about: {
             title: 'About Me',
-            description: 'I am a passionate developer with a keen eye for detail and a love for creating elegant solutions. With expertise in multiple programming languages and frameworks, I strive to build applications that not only function flawlessly but also provide an exceptional user experience. My approach combines technical excellence with creative problem-solving to deliver outstanding results.',
+            description: 'As a second-year Artificial Intelligence student at the Technical University of Varna, I bring a strong foundation in programming, algorithms, and system design, combined with a deep interest in financial technologies. I have hands-on experience with C, C++, C#, Python, Java, SQL, and web technologies, and I enjoy turning complex ideas into clean, practical solutions.',
             hireMe: 'Hire Me',
-            hobbies: 'Hobbies'
+            hobbies: 'Hobbies',
+            philosophy: 'Jack of all trades, master of none',
+            personalInfo: {
+                nationality: 'Bulgarian',
+                dateOfBirth: '2 Jan 2004',
+                placeOfBirth: 'Varna, Bulgaria',
+                gender: 'Male',
+                phone: '(+359) 896035922',
+                email: 'kachikovpetko@gmail.com'
+            }
         },
         skills: {
-            title: 'Skills',
-            current: 'Current Skills',
-            learning: 'Learning'
+            title: 'SKILLS',
+            languages: 'Languages',
+            frameworks: 'Frameworks',
+            mobile: 'Mobile Development',
+            ai: 'AI',
+            tools: 'Tools',
+            html: 'HTML5',
+            css: 'CSS3',
+            javascript: 'JavaScript',
+            react: 'React',
+            nextjs: 'Next.js',
+            flutter: 'Flutter',
+            firebase: 'Firebase',
+            expressjs: 'Express.js',
+            tensorflow: 'TensorFlow',
+            pytorch: 'PyTorch',
+            git: 'Git',
+            vscode: 'VS Code',
+            mysql: 'MySQL',
+            oracle: 'Oracle',
+            postgresql: 'PostgreSQL',
+            c: 'C',
+            cpp: 'C++',
+            csharp: 'C#',
+            java: 'Java',
+            python: 'Python',
+            sql: 'SQL'
         },
         education: {
             title: 'Education',
             degree: 'Bachelor\'s Degree in Artificial Intelligence',
             university: 'Technical University of Varna',
-            universityYears: '2023 - Present',
+            currentPeriod: '2023 - Ongoing',
+            previousPeriod: '2018 - 2023',
             courseWork: 'Currently pursuing studies in artificial intelligence, machine learning, and data science.',
-            highSchool: 'High School Diploma in Software and Hardware Science',
-            school: 'St. Clement of Ohrid High School',
-            schoolYears: '2018 - 2023',
-            focus: 'Specialized in software development and computer hardware.'
+            highSchool: 'High School Diploma',
+            school: 'SU "Kliment Ohridski"',
+            focus: 'Specialized in software development and computer hardware.',
+            additionalCourses: {
+                pythonBasics: {
+                    title: 'Programming Basics with Python',
+                    institution: 'SoftUni',
+                    period: '1 Jun 2022 - 30 Aug 2022'
+                },
+                pythonFundamentals: {
+                    title: 'Fundamentals of Programming with Python',
+                    institution: 'SoftUni',
+                    period: '1 Sep 2022 - 30 Jan 2023'
+                }
+            }
         },
         projects: {
             title: 'Projects',
             noDescription: 'No description available',
             error: 'Failed to load projects. Please try again later.',
             loading: 'Loading projects...'
-        },
-        experience: {
-            title: 'Experience',
-            softwareDev: 'Software Developer',
-            company: 'Company Name',
-            juniorDev: 'Junior Developer',
-            prevCompany: 'Previous Company',
-            currentRole: {
-                desc1: 'Developed and maintained web applications using React and Node.js',
-                desc2: 'Implemented responsive designs and ensured cross-browser compatibility',
-                desc3: 'Collaborated with team members using Git and Agile methodologies'
-            },
-            previousRole: {
-                desc1: 'Assisted in developing and testing web applications',
-                desc2: 'Worked with REST APIs and database management',
-                desc3: 'Participated in code reviews and team meetings'
-            }
         },
         footer: {
             contact: 'Contact',
@@ -84,8 +111,7 @@ const translations = {
             about: 'За мен',
             skills: 'Умения',
             education: 'Образование',
-            projects: 'Проекти',
-            experience: 'Опит'
+            projects: 'Проекти'
         },
         hero: {
             title: 'Превръщане на идеи в елегантни дигитални решения',
@@ -93,48 +119,76 @@ const translations = {
         },
         about: {
             title: 'За мен',
-            description: 'Аз съм страстен разработчик с внимание към детайла и любов към създаването на елегантни решения. С експертиза в множество програмни езици и фреймуърки, се стремя да създавам приложения, които не само функционират безупречно, но и осигуряват изключително потребителско изживяване. Моят подход съчетава техническо съвършенство с креативно решаване на проблеми за постигане на изключителни резултати.',
+            description: 'Като второкурсник по Изкуствен интелект в Технически университет - Варна, притежавам солидна основа в програмирането, алгоритмите и системния дизайн, съчетана с дълбок интерес към финансовите технологии. Имам практически опит с C, C++, C#, Python, Java, SQL и уеб технологии, и обичам да превръщам сложните идеи в чисти, практични решения.',
             hireMe: 'Наеми ме',
-            hobbies: 'Хобита'
+            hobbies: 'Хобита',
+            philosophy: 'Майстор на всичко, експерт в нищо',
+            personalInfo: {
+                nationality: 'Българин',
+                dateOfBirth: '2 Януари 2004',
+                placeOfBirth: 'Варна, България',
+                gender: 'Мъж',
+                phone: '(+359) 896035922',
+                email: 'kachikovpetko@gmail.com'
+            }
         },
         skills: {
-            title: 'Умения',
-            current: 'Текущи умения',
-            learning: 'Изучавам'
+            title: 'УМЕНИЯ',
+            languages: 'Езици',
+            frameworks: 'Фреймуърк',
+            mobile: 'Мобилна Разработка',
+            ai: 'Изкуствен Интелект',
+            tools: 'Инструменти',
+            html: 'HTML',
+            css: 'CSS',
+            javascript: 'JavaScript',
+            react: 'React',
+            nextjs: 'Next.js',
+            flutter: 'Flutter',
+            firebase: 'Firebase',
+            expressjs: 'Express.js',
+            tensorflow: 'TensorFlow',
+            pytorch: 'PyTorch',
+            git: 'Git',
+            vscode: 'VS Code',
+            mysql: 'MySQL',
+            oracle: 'Oracle',
+            postgresql: 'PostgreSQL',
+            c: 'C',
+            cpp: 'C++',
+            csharp: 'C#',
+            java: 'Java',
+            python: 'Python',
+            sql: 'SQL'
         },
         education: {
             title: 'Образование',
             degree: 'Бакалавър по Изкуствен интелект',
             university: 'Технически университет - Варна',
-            universityYears: '2023 - Настояще',
+            currentPeriod: '2023 - В момента',
+            previousPeriod: '2018 - 2023',
             courseWork: 'В момента изучавам изкуствен интелект, машинно обучение и анализ на данни.',
-            highSchool: 'Диплома за средно образование по софтуерни и хардуерни науки',
-            school: 'СОУ "Св. Климент Охридски"',
-            schoolYears: '2018 - 2023',
-            focus: 'Специализация в разработка на софтуер и компютърен хардуер.'
+            highSchool: 'Средно образование',
+            school: 'СУ "Климент Охридски"',
+            focus: 'Специализация в разработка на софтуер и компютърен хардуер.',
+            additionalCourses: {
+                pythonBasics: {
+                    title: 'Основи на програмирането с Python',
+                    institution: 'СофтУни',
+                    period: '1 Юни 2022 - 30 Август 2022'
+                },
+                pythonFundamentals: {
+                    title: 'Фундаментални принципи на програмирането с Python',
+                    institution: 'СофтУни',
+                    period: '1 Септември 2022 - 30 Януари 2023'
+                }
+            }
         },
         projects: {
             title: 'Проекти',
             noDescription: 'Няма налично описание',
             error: 'Грешка при зареждане на проектите. Моля, опитайте отново по-късно.',
             loading: 'Зареждане на проекти...'
-        },
-        experience: {
-            title: 'Опит',
-            softwareDev: 'Софтуерен разработчик',
-            company: 'Име на компания',
-            juniorDev: 'Младши разработчик',
-            prevCompany: 'Предишна компания',
-            currentRole: {
-                desc1: 'Разработка и поддръжка на уеб приложения с React и Node.js',
-                desc2: 'Внедряване на отзивчив дизайн и осигуряване на съвместимост между браузърите',
-                desc3: 'Сътрудничество с екипа използвайки Git и Agile методологии'
-            },
-            previousRole: {
-                desc1: 'Подпомагане в разработката и тестването на уеб приложения',
-                desc2: 'Работа с REST APIs и управление на бази данни',
-                desc3: 'Участие в прегледи на код и екипни срещи'
-            }
         },
         footer: {
             contact: 'Контакти',
@@ -163,8 +217,7 @@ const translations = {
             about: 'Über mich',
             skills: 'Fähigkeiten',
             education: 'Ausbildung',
-            projects: 'Projekte',
-            experience: 'Erfahrung'
+            projects: 'Projekte'
         },
         hero: {
             title: 'Ideen in elegante digitale Lösungen umwandeln',
@@ -172,48 +225,76 @@ const translations = {
         },
         about: {
             title: 'Über mich',
-            description: 'Ich bin ein leidenschaftlicher Entwickler mit Blick fürs Detail und Liebe zur Entwicklung eleganter Lösungen. Mit Expertise in verschiedenen Programmiersprachen und Frameworks strebe ich danach, Anwendungen zu entwickeln, die nicht nur einwandfrei funktionieren, sondern auch ein außergewöhnliches Benutzererlebnis bieten. Mein Ansatz verbindet technische Exzellenz mit kreativer Problemlösung.',
+            description: 'Als Student im zweiten Jahr für Künstliche Intelligenz an der Technischen Universität Varna bringe ich eine starke Grundlage in Programmierung, Algorithmen und Systemdesign mit, kombiniert mit einem tiefen Interesse an Finanztechnologien. Ich habe praktische Erfahrung mit C, C++, C#, Python, Java, SQL und Webtechnologien und entwickle gerne komplexe Ideen in saubere, praktische Lösungen.',
             hireMe: 'Kontaktieren Sie mich',
-            hobbies: 'Hobbys'
+            hobbies: 'Hobbys',
+            philosophy: 'Alleskönner, aber in nichts Meister',
+            personalInfo: {
+                nationality: 'Bulgarisch',
+                dateOfBirth: '2. Januar 2004',
+                placeOfBirth: 'Varna, Bulgarien',
+                gender: 'Männlich',
+                phone: '(+359) 896035922',
+                email: 'kachikovpetko@gmail.com'
+            }
         },
         skills: {
-            title: 'Fähigkeiten',
-            current: 'Aktuelle Fähigkeiten',
-            learning: 'Lernend'
+            title: 'FÄHIGKEITEN',
+            languages: 'Sprachen',
+            frameworks: 'Rahmenwerk',
+            mobile: 'Mobile Entwicklung',
+            ai: 'KI',
+            tools: 'Werkzeuge',
+            html: 'HTML',
+            css: 'CSS',
+            javascript: 'JavaScript',
+            react: 'React',
+            nextjs: 'Next.js',
+            flutter: 'Flutter',
+            firebase: 'Firebase',
+            expressjs: 'Express.js',
+            tensorflow: 'TensorFlow',
+            pytorch: 'PyTorch',
+            git: 'Git',
+            vscode: 'VS Code',
+            mysql: 'MySQL',
+            oracle: 'Oracle',
+            postgresql: 'PostgreSQL',
+            c: 'C',
+            cpp: 'C++',
+            csharp: 'C#',
+            java: 'Java',
+            python: 'Python',
+            sql: 'SQL'
         },
         education: {
             title: 'Ausbildung',
             degree: 'Bachelor in Künstlicher Intelligenz',
             university: 'Technische Universität Varna',
-            universityYears: '2023 - Gegenwart',
+            currentPeriod: '2023 - Laufend',
+            previousPeriod: '2018 - 2023',
             courseWork: 'Aktuell Studium in künstlicher Intelligenz, maschinellem Lernen und Datenanalyse.',
-            highSchool: 'Abitur in Software- und Hardwarewissenschaften',
+            highSchool: 'Abitur',
             school: 'St. Kliment von Ohrid Gymnasium',
-            schoolYears: '2018 - 2023',
-            focus: 'Spezialisierung auf Softwareentwicklung und Computerhardware.'
+            focus: 'Spezialisierung auf Softwareentwicklung und Computerhardware.',
+            additionalCourses: {
+                pythonBasics: {
+                    title: 'Grundlagen der Programmierung mit Python',
+                    institution: 'SoftUni',
+                    period: '1. Juni 2022 - 30. August 2022'
+                },
+                pythonFundamentals: {
+                    title: 'Fundamentale Programmierung mit Python',
+                    institution: 'SoftUni',
+                    period: '1. September 2022 - 30. Januar 2023'
+                }
+            }
         },
         projects: {
             title: 'Projekte',
             noDescription: 'Keine Beschreibung verfügbar',
             error: 'Fehler beim Laden der Projekte. Bitte versuchen Sie es später erneut.',
             loading: 'Projekte werden geladen...'
-        },
-        experience: {
-            title: 'Erfahrung',
-            softwareDev: 'Softwareentwickler',
-            company: 'Firmenname',
-            juniorDev: 'Junior Entwickler',
-            prevCompany: 'Vorheriges Unternehmen',
-            currentRole: {
-                desc1: 'Entwicklung und Wartung von Webanwendungen mit React und Node.js',
-                desc2: 'Implementierung von responsivem Design und Sicherstellung der Browser-Kompatibilität',
-                desc3: 'Zusammenarbeit im Team mit Git und Agile-Methoden'
-            },
-            previousRole: {
-                desc1: 'Unterstützung bei der Entwicklung und dem Testen von Webanwendungen',
-                desc2: 'Arbeit mit REST-APIs und Datenbankverwaltung',
-                desc3: 'Teilnahme an Code-Reviews und Team-Meetings'
-            }
         },
         footer: {
             contact: 'Kontakt',
