@@ -37,16 +37,18 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    right: 0;
     z-index: 1000;
-    transition: var(--transition);
-    padding: 1.5rem 0;
+    transition: all 0.3s ease;
+    padding: 1rem 0;
+    background-color: transparent;
+    border-bottom: none;
 }
 
 .navbar.scrolled {
     background-color: rgba(255, 255, 255, 0.98);
-    border-bottom: 2px solid rgba(0, 0, 0, 0.5);
-    padding: 1rem 0;
+    border-bottom: 2px solid var(--color-olive);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .nav-content {
@@ -56,19 +58,21 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    z-index: 1001;
 }
 
 .logo {
     font-family: 'Playfair Display', serif;
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--color-aloe);
+    color: var(--color-moss);
     text-decoration: none;
     transition: var(--transition);
 }
 
 .logo:hover {
-    color: var(--color-white);
+    color: var(--color-cypress);
     transform: scale(1.2);
 }
 
@@ -79,34 +83,51 @@ body {
 
 .nav-links a {
     text-decoration: none;
-    color: var(--color-aloe);
+    color: var(--color-moss);
     font-size: 1rem;
     font-weight: 500;
     transition: var(--transition);
 }
 
 .nav-links a:hover {
-    color: var(--color-white);
+    color: var(--color-cypress);
     transform: scale(1.2);
 }
 
-/* Update the navbar colors when scrolled */
+/* Update text colors for non-scrolled state */
+.navbar:not(.scrolled) .logo,
+.navbar:not(.scrolled) .nav-links a,
+.navbar:not(.scrolled) .lang-link {
+    color: var(--color-aloe);
+}
+
+.navbar:not(.scrolled) .logo:hover,
+.navbar:not(.scrolled) .nav-links a:hover,
+.navbar:not(.scrolled) .lang-link:hover {
+    color: var(--color-white);
+}
+
+.navbar:not(.scrolled) .lang-link.active {
+    color: var(--color-white);
+    opacity: 1;
+}
+
+/* Scrolled state colors remain moss and cypress */
 .navbar.scrolled .logo,
-.navbar.scrolled .nav-links a {
+.navbar.scrolled .nav-links a,
+.navbar.scrolled .lang-link {
     color: var(--color-moss);
 }
 
 .navbar.scrolled .logo:hover,
-.navbar.scrolled .nav-links a:hover {
+.navbar.scrolled .nav-links a:hover,
+.navbar.scrolled .lang-link:hover {
     color: var(--color-cypress);
 }
 
-/* Remove the previous text shadow rules */
-.navbar:not(.scrolled) .nav-links a,
-.navbar:not(.scrolled) .lang-link,
-.navbar:not(.scrolled) .logo {
-    color: var(--color-aloe);
-    font-weight: 500;
+.navbar.scrolled .lang-link.active {
+    color: var(--color-cypress);
+    opacity: 1;
 }
 
 .language-selector {
@@ -120,7 +141,7 @@ body {
 
 .lang-link {
     text-decoration: none;
-    color: var(--color-cedar);
+    color: var(--color-moss);
     transition: var(--transition);
     font-weight: 400;
     text-transform: uppercase;
@@ -133,7 +154,7 @@ body {
 }
 
 .lang-link.active {
-    color: var(--color-moss);
+    color: var(--color-cypress);
     font-weight: 500;
     opacity: 1;
 }
