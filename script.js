@@ -114,7 +114,7 @@ async function loadGitHubProjects() {
             throw new Error('No projects found');
         }
 
-        renderProjects(projects, projectsTrack);
+        await renderProjects(projects, projectsTrack);
 
     } catch (error) {
         console.error('Error loading projects:', error);
@@ -127,56 +127,123 @@ async function loadGitHubProjects() {
     }
 }
 
-function renderProjects(projects, container) {
+async function fetchRepoLanguages(languagesUrl) {
+    try {
+        const response = await fetch(languagesUrl);
+        if (!response.ok) {
+            throw new Error('Failed to fetch languages');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching languages:', error);
+        return {};
+    }
+}
+
+function calculateLanguagePercentages(languages) {
+    const total = Object.values(languages).reduce((sum, bytes) => sum + bytes, 0);
+    return Object.entries(languages).map(([name, bytes]) => ({
+        name,
+        percentage: ((bytes / total) * 100).toFixed(1)
+    })).sort((a, b) => parseFloat(b.percentage) - parseFloat(a.percentage));
+}
+
+function getLanguageIcon(language) {
+    // Map languages to their corresponding Bootstrap icons
+    const iconMap = {
+        JavaScript: 'bi-filetype-js',
+        TypeScript: 'bi-filetype-tsx',
+        Python: 'bi-filetype-py',
+        Java: 'bi-filetype-java',
+        'C#': 'bi-filetype-cs',
+        'C++': 'bi-filetype-cpp',
+        C: 'bi-filetype-c',
+        HTML: 'bi-filetype-html',
+        CSS: 'bi-filetype-css',
+        Ruby: 'bi-filetype-rb',
+        PHP: 'bi-filetype-php',
+        Swift: 'bi-filetype-swift',
+        Go: 'bi-filetype-go',
+        SQL: 'bi-filetype-sql',
+        Shell: 'bi-terminal',
+        PowerShell: 'bi-terminal',
+        Dockerfile: 'bi-docker',
+        Rust: 'bi-gear',
+        SCSS: 'bi-filetype-sass',
+        Vue: 'bi-code-slash',
+        React: 'bi-code-slash',
+        Angular: 'bi-code-slash',
+        // Add more mappings as needed
+    };
+
+    return iconMap[language] || 'bi-code-slash'; // Default icon if language not found
+}
+
+function createLanguageTag(language) {
+    return `<span class="language-tag" title="${language}">
+        <i class="bi ${getLanguageIcon(language)}"></i>
+        ${language}
+    </span>`;
+}
+
+async function createProjectCard(project) {
+    const card = document.createElement('div');
+    card.className = 'project-card';
+    
+    const description = project.description || 'No description available';
+    
+    // Fetch languages for this repository
+    const languages = await fetchRepoLanguages(project.languages_url);
+    const languagesHtml = Object.keys(languages)
+        .map(lang => createLanguageTag(lang))
+        .join('');
+    
+    card.innerHTML = `
+        <div class="project-content">
+            <h3>${project.name}</h3>
+            <p class="project-description">${description}</p>
+            <div class="project-footer">
+                <div class="project-tags">
+                    ${languagesHtml}
+                </div>
+                <div class="project-links">
+                    <a href="${project.html_url}" target="_blank" aria-label="GitHub Repository">
+                        <i class="bi bi-github"></i>
+                    </a>
+                    ${project.homepage ? `
+                        <a href="${project.homepage}" target="_blank" aria-label="Live Demo">
+                            <i class="bi bi-box-arrow-up-right"></i>
+                        </a>
+                    ` : ''}
+                </div>
+            </div>
+        </div>
+    `;
+    
+    return card;
+}
+
+// Update renderProjects to handle async card creation
+async function renderProjects(projects, container) {
     // Clear loading state
     container.innerHTML = '';
     
     // Create project cards
-    projects.forEach(project => {
+    for (const project of projects) {
         if (!project.fork) { // Only show non-forked projects
-            const card = createProjectCard(project);
+            const card = await createProjectCard(project);
             container.appendChild(card);
         }
-    });
+    }
 
     // Clone first few items for infinite scroll
-    const itemsToClone = Math.min(3, projects.length);
+    const itemsToClone = Math.min(3, container.children.length);
     for (let i = 0; i < itemsToClone; i++) {
         const clone = container.children[i].cloneNode(true);
         container.appendChild(clone);
     }
 
     initializeSlider(container);
-}
-
-function createProjectCard(project) {
-    const card = document.createElement('div');
-    card.className = 'project-card';
-    
-    const description = project.description || 'No description available';
-    const language = project.language || 'Not specified';
-    
-    card.innerHTML = `
-        <div class="project-content">
-            <h3>${project.name}</h3>
-            <p>${description}</p>
-            <div class="project-tags">
-                <span>${language}</span>
-            </div>
-            <div class="project-links">
-                <a href="${project.html_url}" target="_blank" aria-label="GitHub Repository">
-                    <i class="bi bi-github"></i>
-                </a>
-                ${project.homepage ? `
-                    <a href="${project.homepage}" target="_blank" aria-label="Live Demo">
-                        <i class="bi bi-box-arrow-up-right"></i>
-                    </a>
-                ` : ''}
-            </div>
-        </div>
-    `;
-    
-    return card;
 }
 
 function initializeSlider(container) {

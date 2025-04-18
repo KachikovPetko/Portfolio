@@ -707,6 +707,8 @@ h2 {
 
 .project-card {
     min-width: 300px;
+    width: 300px;
+    height: 280px;
     background: var(--color-aloe);
     border-radius: 15px;
     overflow: hidden;
@@ -736,57 +738,120 @@ h2 {
 }
 
 .project-content {
-    padding: 2rem;
-    flex-grow: 1;
+    padding: 1.5rem;
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
 
 .project-content h3 {
     color: var(--color-moss);
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
     font-family: 'Playfair Display', serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.project-content p {
+.project-description {
     color: var(--color-olive);
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
     flex-grow: 1;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.project-footer {
+    margin-top: auto;
 }
 
 .project-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
-.project-tags span {
-    background-color: var(--color-cedar);
-    color: var(--color-moss);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
+.language-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background-color: var(--color-moss);
+    color: var(--color-aloe);
+    padding: 0.3rem 0.6rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.language-tag:hover {
+    transform: translateY(-2px);
+    background-color: var(--color-cypress);
+}
+
+.language-tag i {
     font-size: 0.9rem;
 }
 
 .project-links {
     display: flex;
     gap: 1rem;
-    margin-bottom: 1rem;
 }
 
 .project-links a {
     color: var(--color-moss);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     transition: var(--transition);
 }
 
 .project-links a:hover {
     color: var(--color-cypress);
     transform: translateY(-2px);
+}
+
+/* Language-specific icon colors */
+.language-tag .bi-filetype-js { color: #F7DF1E; }
+.language-tag .bi-filetype-py { color: #3776AB; }
+.language-tag .bi-filetype-java { color: #E76F00; }
+.language-tag .bi-filetype-cs { color: #68217A; }
+.language-tag .bi-filetype-cpp { color: #00599C; }
+.language-tag .bi-filetype-c { color: #283593; }
+.language-tag .bi-filetype-html { color: #E34F26; }
+.language-tag .bi-filetype-css { color: #1572B6; }
+.language-tag .bi-filetype-sql { color: #336791; }
+.language-tag .bi-terminal { color: #4EAA25; }
+.language-tag .bi-docker { color: #2496ED; }
+
+@media (max-width: 768px) {
+    .project-card {
+        min-width: 260px;
+        width: 260px;
+        height: 250px;
+    }
+
+    .project-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .project-description {
+        font-size: 0.85rem;
+    }
+
+    .language-tag {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+    }
+    
+    .language-tag i {
+        font-size: 0.8rem;
+    }
 }
 
 .project-stats {
@@ -851,44 +916,6 @@ h2 {
     color: var(--color-cypress);
     font-size: 0.9rem;
     margin-top: 1rem;
-}
-
-/* Responsive Design for Projects Section */
-@media (max-width: 768px) {
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .project-card {
-        min-width: 260px;
-    }
-
-    .project-content h3 {
-        font-size: 1.3rem;
-    }
-
-    .project-content p {
-        font-size: 0.9rem;
-    }
-
-    .project-tags span {
-        font-size: 0.8rem;
-        padding: 0.4rem 0.8rem;
-    }
-
-    .slider-container {
-        padding: 0 10px;
-        gap: 10px;
-    }
-
-    .slider-nav {
-        width: 35px;
-        height: 35px;
-    }
-
-    .slider-nav i {
-        font-size: 1rem;
-    }
 }
 
 /* About Section */
@@ -1077,148 +1104,6 @@ h2 {
         100% {
             transform: translateX(calc(-80px * 10));
         }
-    }
-}
-
-/* About Section */
-.about {
-    padding: 6rem 2rem;
-    background-color: var(--color-white);
-}
-
-.about-container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.about-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    margin-bottom: 3rem;
-    align-items: center;
-}
-
-.about-image {
-    position: relative;
-}
-
-.about-image img {
-    width: 100%;
-    max-width: 500px;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(44, 52, 36, 0.1);
-}
-
-.about-text {
-    padding-right: 2rem;
-}
-
-.about-text h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--color-moss);
-    font-family: 'Playfair Display', serif;
-    text-transform: none;
-    letter-spacing: normal;
-}
-
-.about-text p {
-    color: var(--color-olive);
-    font-size: 1.1rem;
-    line-height: 1.8;
-    margin-bottom: 2rem;
-}
-
-.hire-button {
-    display: inline-block;
-    padding: 1rem 2.5rem;
-    background-color: var(--color-moss);
-    color: var(--color-white);
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: 500;
-    transition: var(--transition);
-}
-
-.hire-button:hover {
-    background-color: var(--color-cypress);
-    transform: translateY(-2px);
-}
-
-/* Hobbies Section */
-.hobbies {
-    margin-top: 4rem;
-}
-
-.hobby-icons {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 2rem;
-    text-align: center;
-}
-
-.hobby-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    transition: var(--transition);
-}
-
-.hobby-item:hover {
-    transform: translateY(-5px);
-}
-
-.hobby-item i {
-    font-size: 1.8rem;
-    color: var(--color-cypress);
-}
-
-.hobby-item span {
-    font-size: 0.9rem;
-    color: var(--color-olive);
-}
-
-/* Responsive Design for About Section */
-@media (max-width: 768px) {
-    .about {
-        padding: 4rem 1.5rem;
-    }
-
-    .about-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-    .about-image {
-        text-align: center;
-    }
-
-    .about-image img {
-        max-width: 100%;
-    }
-
-    .about-text {
-        padding-right: 0;
-    }
-
-    .about-text h2 {
-        font-size: 2rem;
-    }
-
-    .hobby-icons {
-        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-        gap: 1.5rem;
-    }
-
-    .hobby-item i {
-        font-size: 1.5rem;
-    }
-
-    .hobby-item span {
-        font-size: 0.8rem;
     }
 }
 
