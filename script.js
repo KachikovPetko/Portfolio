@@ -1,3 +1,5 @@
+import config from './config.js';
+
 // Language switching functionality
 let currentLang = 'en';
 
@@ -75,26 +77,36 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// GitHub Projects Loading
-async function loadGitHubProjects() {
-    const projectsTrack = document.getElementById('projects-track');
-    const username = 'KachikovPetko';
-    const projectsPerPage = 10;
-    const token = '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';
-    
+// Function to fetch GitHub projects
+async function fetchGitHubProjects() {
     try {
-        const response = await fetch(`https://api.github.com/users/${username}/repos?per_page=${projectsPerPage}&sort=updated`, {
+        const response = await fetch('https://api.github.com/user/repos', {
             headers: {
-                'Authorization': `Bearer ${token}`,
+                'Authorization': `token ${config.github.token}`,
                 'Accept': 'application/vnd.github.v3+json'
             }
         });
         
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            throw new Error('Failed to fetch projects');
         }
         
         const projects = await response.json();
+        return projects;
+    } catch (error) {
+        console.error('Error fetching GitHub projects:', error);
+        return [];
+    }
+}
+
+// GitHub Projects Loading
+async function loadGitHubProjects() {
+    const projectsTrack = document.getElementById('projects-track');
+    const username = 'KachikovPetko';
+    const projectsPerPage = 10;
+    
+    try {
+        const projects = await fetchGitHubProjects();
         
         if (!projects || projects.length === 0) {
             throw new Error('No projects found');

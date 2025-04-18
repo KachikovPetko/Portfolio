@@ -2,6 +2,10 @@
 
 A modern, responsive portfolio website showcasing my skills, projects, and professional experience. Built with HTML, CSS, and JavaScript.
 
+## Live Site
+
+Visit the live portfolio at: [https://kachikovpetko.github.io/Portfolio/](https://kachikovpetko.github.io/Portfolio/)
+
 ## Features
 
 - **Responsive Design**: Fully responsive layout that works on all devices
